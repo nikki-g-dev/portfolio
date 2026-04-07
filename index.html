@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Naga Nikhila G — Senior Full Stack Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #111118;
+    --bg3: #1a1a24;
+    --accent: #4f9cf9;
+    --accent2: #a78bfa;
+    --accent3: #34d399;
+    --text: #f0f0f8;
+    --text2: #9090b0;
+    --text3: #5a5a7a;
+    --border: rgba(255,255,255,0.07);
+    --glow: rgba(79,156,249,0.15);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E"); opacity: 0.4; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 4rem; background: rgba(10,10,15,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+  .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem; color: var(--text); letter-spacing: -0.02em; }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { font-size: 0.85rem; font-weight: 400; letter-spacing: 0.05em; color: var(--text2); text-decoration: none; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta { font-size: 0.8rem; font-weight: 500; padding: 0.55rem 1.1rem; background: var(--accent); color: #000; border-radius: 4px; text-decoration: none; transition: all 0.2s; letter-spacing: 0.01em; white-space: nowrap; }
+  .nav-cta:hover { background: #7ab8ff; transform: translateY(-1px); }
+
+  /* HERO */
+  #hero { min-height: 100vh; display: flex; align-items: center; padding: 8rem 4rem 4rem; position: relative; overflow: hidden; }
+  .hero-orb { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; }
+  .orb1 { width: 600px; height: 600px; background: rgba(79,156,249,0.08); top: -100px; right: -100px; }
+  .orb2 { width: 400px; height: 400px; background: rgba(167,139,250,0.06); bottom: 0; left: 200px; }
+  .hero-content { max-width: 820px; position: relative; z-index: 1; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); padding: 0.35rem 0.9rem; border: 1px solid rgba(79,156,249,0.3); border-radius: 20px; margin-bottom: 2rem; animation: fadeUp 0.6s ease both; }
+  .hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  .hero-name { font-family: 'Syne', sans-serif; font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 800; line-height: 1; letter-spacing: -0.03em; margin-bottom: 0.5rem; animation: fadeUp 0.6s 0.1s ease both; }
+  .hero-name .line2 { color: var(--text2); font-weight: 400; }
+  .hero-title { font-family: 'Syne', sans-serif; font-size: clamp(0.9rem, 1.8vw, 1.2rem); font-weight: 600; color: var(--accent); margin-bottom: 1.75rem; letter-spacing: 0.02em; animation: fadeUp 0.6s 0.2s ease both; }
+  .hero-desc { font-size: 1rem; font-weight: 300; color: var(--text2); max-width: 640px; line-height: 1.85; margin-bottom: 2.5rem; animation: fadeUp 0.6s 0.3s ease both; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp 0.6s 0.4s ease both; }
+  .btn-primary { padding: 0.8rem 2rem; background: var(--accent); color: #000; font-weight: 600; font-size: 0.9rem; border-radius: 4px; text-decoration: none; transition: all 0.2s; }
+  .btn-primary:hover { background: #7ab8ff; transform: translateY(-1px); }
+  .btn-secondary { padding: 0.8rem 2rem; border: 1px solid var(--border); color: var(--text2); font-weight: 400; font-size: 0.9rem; border-radius: 4px; text-decoration: none; transition: all 0.2s; }
+  .btn-secondary:hover { border-color: var(--text2); color: var(--text); }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+
+  /* SECTIONS */
+  section { padding: 6rem 4rem; position: relative; z-index: 1; }
+  .section-label { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+  .section-title { font-family: 'Syne', sans-serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1rem; }
+  .section-sub { font-size: 1rem; color: var(--text2); max-width: 580px; line-height: 1.7; margin-bottom: 3.5rem; }
+  .divider { height: 1px; background: var(--border); margin: 0 4rem; }
+
+  /* METRICS */
+  .metrics-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--border); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .metric-item { background: var(--bg2); padding: 2.25rem 1.5rem; text-align: center; transition: background 0.25s, box-shadow 0.25s; cursor: default; }
+  .metric-item:hover { background: var(--bg3); box-shadow: inset 0 0 30px rgba(79,156,249,0.07); }
+  .metric-val { font-family: 'Syne', sans-serif; font-size: 2.2rem; font-weight: 800; color: var(--text); line-height: 1; margin-bottom: 0.45rem; }
+  .metric-val .acc { color: var(--accent); }
+  .metric-arrow-up { color: var(--accent3); font-size: 0.85rem; margin-right: 2px; }
+  .metric-arrow-down { color: #f87171; font-size: 0.85rem; margin-right: 2px; }
+  .metric-desc { font-size: 0.7rem; color: var(--text3); text-transform: uppercase; letter-spacing: 0.09em; }
+
+  /* SKILLS */
+  #skills { background: var(--bg2); }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .skill-card { background: var(--bg2); padding: 1.75rem 2rem; transition: background 0.2s; }
+  .skill-card:hover { background: var(--bg3); }
+  .skill-card-icon { font-size: 1.4rem; margin-bottom: 0.75rem; width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: var(--bg3); }
+  .skill-card-title { font-family: 'Syne', sans-serif; font-size: 0.88rem; font-weight: 700; margin-bottom: 0.75rem; letter-spacing: 0.02em; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .skill-tag { font-size: 0.72rem; padding: 0.25rem 0.6rem; background: var(--bg3); border: 1px solid var(--border); border-radius: 4px; color: var(--text2); }
+  .skill-tag.hot { border-color: rgba(79,156,249,0.35); color: var(--accent); background: rgba(79,156,249,0.08); font-weight: 500; }
+
+  /* EXPERIENCE */
+  .exp-timeline { position: relative; }
+  .exp-timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: var(--border); }
+  .exp-item { padding-left: 2.5rem; margin-bottom: 3.5rem; position: relative; }
+  .exp-item::before { content: ''; position: absolute; left: -5px; top: 6px; width: 11px; height: 11px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); transition: all 0.3s; }
+  .exp-item:hover::before { background: var(--accent); box-shadow: 0 0 12px var(--glow); }
+  .exp-date { font-size: 0.75rem; color: var(--text3); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.4rem; }
+  .exp-company { font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 0.2rem; }
+  .exp-role { font-size: 0.88rem; color: var(--accent); margin-bottom: 1rem; font-weight: 500; }
+  .exp-bullets { list-style: none; }
+  .exp-bullets li { font-size: 0.9rem; color: var(--text2); line-height: 1.75; padding: 0.25rem 0 0.25rem 1rem; position: relative; }
+  .exp-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--text3); font-size: 0.8rem; top: 0.38rem; }
+  .exp-bullets li strong { color: var(--text); font-weight: 500; }
+  .exp-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+  .stack-tag { font-size: 0.7rem; padding: 0.2rem 0.55rem; background: rgba(79,156,249,0.08); border: 1px solid rgba(79,156,249,0.2); border-radius: 3px; color: var(--accent); font-weight: 500; }
+
+  /* PROJECTS */
+  #projects { background: var(--bg2); }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem; }
+  .project-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; transition: all 0.3s; position: relative; overflow: hidden; }
+  .project-card::before { content: ''; position: absolute; inset: 0; opacity: 0; background: linear-gradient(135deg, rgba(79,156,249,0.05) 0%, transparent 60%); transition: opacity 0.3s; }
+  .project-card:hover { border-color: rgba(79,156,249,0.3); transform: translateY(-3px); }
+  .project-card:hover::before { opacity: 1; }
+  .project-num { font-family: 'Syne', sans-serif; font-size: 3rem; font-weight: 800; color: var(--border); line-height: 1; margin-bottom: 1rem; }
+  .project-title { font-family: 'Syne', sans-serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 1rem; }
+  .project-highlights { list-style: none; margin-bottom: 1.5rem; }
+  .project-highlights li { font-size: 0.84rem; color: var(--text2); padding: 0.22rem 0 0.22rem 1rem; position: relative; line-height: 1.65; }
+  .project-highlights li::before { content: '▸'; position: absolute; left: 0; color: var(--accent3); font-size: 0.7rem; top: 0.28rem; }
+  .project-link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; color: var(--accent); text-decoration: none; font-weight: 500; transition: gap 0.2s; }
+  .project-link:hover { gap: 0.7rem; }
+
+  /* EDUCATION */
+  .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.25rem; margin-bottom: 2rem; }
+  .edu-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 10px; padding: 1.75rem; transition: border-color 0.2s; }
+  .edu-card:hover { border-color: rgba(79,156,249,0.3); }
+  .edu-card.featured { border-color: rgba(167,139,250,0.3); background: rgba(167,139,250,0.04); }
+  .edu-badge { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent2); background: rgba(167,139,250,0.12); border: 1px solid rgba(167,139,250,0.25); padding: 0.22rem 0.6rem; border-radius: 3px; display: inline-block; margin-bottom: 0.75rem; }
+  .edu-badge.green { color: var(--accent3); background: rgba(52,211,153,0.1); border-color: rgba(52,211,153,0.2); }
+  .edu-degree { font-family: 'Syne', sans-serif; font-size: 0.98rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .edu-school { font-size: 0.83rem; color: var(--text2); margin-bottom: 0.2rem; }
+  .edu-year { font-size: 0.76rem; color: var(--text3); margin-bottom: 0.5rem; }
+  .edu-note { font-size: 0.78rem; color: var(--accent2); font-style: italic; line-height: 1.5; margin-top: 0.5rem; }
+  .cert-aws { display: flex; align-items: center; gap: 1.25rem; background: rgba(79,156,249,0.06); border: 1px solid rgba(79,156,249,0.25); border-radius: 10px; padding: 1.25rem 1.5rem; margin-bottom: 0.75rem; transition: border-color 0.2s; }
+  .cert-aws:hover { border-color: rgba(79,156,249,0.4); }
+  .cert-aws-icon { font-size: 1.8rem; flex-shrink: 0; }
+  .cert-aws-name { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--text); }
+  .cert-aws-issuer { font-size: 0.75rem; color: var(--accent); margin-top: 0.15rem; }
+  .cert-aws-badge { margin-left: auto; font-size: 0.68rem; font-weight: 600; padding: 0.25rem 0.7rem; background: rgba(79,156,249,0.15); border: 1px solid rgba(79,156,249,0.3); border-radius: 3px; color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; }
+  .certs-secondary { display: flex; flex-direction: column; gap: 0.6rem; }
+  .cert-item { display: flex; align-items: center; gap: 1rem; background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 0.9rem 1.25rem; transition: border-color 0.2s; }
+  .cert-item:hover { border-color: rgba(79,156,249,0.25); }
+  .cert-icon { font-size: 1rem; flex-shrink: 0; }
+  .cert-name { font-size: 0.85rem; font-weight: 500; }
+  .cert-issuer-text { font-size: 0.72rem; color: var(--text3); }
+
+  /* CONTACT */
+  #contact { background: var(--bg2); }
+  .contact-note { font-size: 0.88rem; color: var(--text3); margin-top: -2.5rem; margin-bottom: 3rem; line-height: 1.6; max-width: 540px; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-link { display: flex; align-items: center; gap: 1rem; padding: 1.1rem 1.5rem; background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; text-decoration: none; transition: all 0.2s; }
+  .contact-link:hover { border-color: rgba(79,156,249,0.4); background: rgba(79,156,249,0.05); transform: translateX(4px); }
+  .contact-link-icon { font-size: 1.1rem; flex-shrink: 0; }
+  .contact-link-text { font-size: 0.88rem; color: var(--text2); }
+  .contact-link-label { font-size: 0.72rem; color: var(--text3); }
+  .availability-card { background: var(--bg3); border: 1px solid rgba(52,211,153,0.2); border-radius: 10px; padding: 2rem; }
+  .avail-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent3); display: inline-block; margin-right: 0.5rem; animation: pulse 2s infinite; }
+  .avail-status { font-size: 0.85rem; color: var(--accent3); font-weight: 600; margin-bottom: 1rem; letter-spacing: 0.03em; }
+  .avail-text { font-size: 0.9rem; color: var(--text2); line-height: 1.8; }
+
+  /* FOOTER */
+  footer { padding: 2rem 4rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .footer-name { font-family: 'Syne', sans-serif; font-size: 0.9rem; font-weight: 700; }
+  .footer-copy { font-size: 0.78rem; color: var(--text3); }
+
+  @media(max-width:768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    #hero { padding: 7rem 1.5rem 3rem; }
+    .metrics-strip { grid-template-columns: repeat(3, 1fr); }
+    .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+    .divider { margin: 0 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">NK<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://mail.google.com/mail/?view=cm&to=nikki.us.2020@gmail.com&su=Let%27s%20Connect%20%E2%80%94%20Engineering%20Opportunity&body=Hi%20Nikhila%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20love%20to%20connect." target="_blank" class="nav-cta">Let's Build Systems Together</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-orb orb1"></div>
+  <div class="hero-orb orb2"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Software &amp; Full Stack Engineer</div>
+    <h1 class="hero-name">
+      Naga Nikhila G<br>
+      <span class="line2">Full Stack Engineer</span>
+    </h1>
+    <div class="hero-title">Distributed Systems &nbsp;·&nbsp; Microservices &nbsp;·&nbsp; Event-Driven Architecture &nbsp;·&nbsp; AWS</div>
+    <p class="hero-desc">
+      Senior Full Stack Engineer focused on high-scale distributed systems, event-driven architectures,
+      and cloud-native platforms on AWS. Built and scaled microservices and Kafka pipelines, improving
+      system performance, reliability, and throughput by 30–40%. Strong end-to-end ownership across
+      system design, backend, frontend, and cloud, with a track record of leading cross-team delivery.
+      Currently strengthening leadership and business strategy through a Master's in Management.
+    </p>
+    <div class="hero-actions">
+      <a href="#experience" class="btn-primary">View Experience</a>
+      <a href="https://github.com/nikki-g-dev" target="_blank" class="btn-secondary">GitHub ↗</a>
+      <a href="https://linkedin.com/in/naga-nikhila-g" target="_blank" class="btn-secondary">LinkedIn ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<div class="metrics-strip">
+  <div class="metric-item">
+    <div class="metric-val"><span class="metric-arrow-up">↑</span>5<span class="acc">+</span></div>
+    <div class="metric-desc">Years Experience</div>
+  </div>
+  <div class="metric-item">
+    <div class="metric-val"><span class="metric-arrow-up">↑</span>30–40<span class="acc">%</span></div>
+    <div class="metric-desc">System Performance</div>
+  </div>
+  <div class="metric-item">
+    <div class="metric-val"><span class="metric-arrow-down">↓</span>60<span class="acc">%</span></div>
+    <div class="metric-desc">Deployment Time</div>
+  </div>
+  <div class="metric-item">
+    <div class="metric-val"><span class="metric-arrow-down">↓</span>35<span class="acc">%</span></div>
+    <div class="metric-desc">MTTR</div>
+  </div>
+  <div class="metric-item">
+    <div class="metric-val">99.7<span class="acc">%</span></div>
+    <div class="metric-desc">Data Consistency</div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Technical Expertise</div>
+  <h2 class="section-title">Skills &amp; Technologies</h2>
+  <p class="section-sub">Designing scalable distributed systems across backend, cloud, and data layers — with full-stack execution.</p>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-card-icon">⚡</div>
+      <div class="skill-card-title">Architecture &amp; Distributed Systems</div>
+      <div class="skill-tags">
+        <span class="skill-tag hot">Distributed Systems</span>
+        <span class="skill-tag hot">Microservices</span>
+        <span class="skill-tag hot">Apache Kafka</span>
+        <span class="skill-tag hot">Event-Driven Architecture</span>
+        <span class="skill-tag">Saga Patterns</span>
+        <span class="skill-tag">Domain-Driven Design</span>
+        <span class="skill-tag">Clean Architecture</span>
+        <span class="skill-tag">AWS SNS/SQS</span>
+        <span class="skill-tag">System Design</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">☕</div>
+      <div class="skill-card-title">Backend Engineering</div>
+      <div class="skill-tags">
+        <span class="skill-tag hot">Java 11/17</span>
+        <span class="skill-tag hot">Spring Boot</span>
+        <span class="skill-tag">Spring Security</span>
+        <span class="skill-tag">TypeScript</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">REST APIs</span>
+        <span class="skill-tag">GraphQL</span>
+        <span class="skill-tag">Microservices Architecture</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">☁️</div>
+      <div class="skill-card-title">Cloud &amp; Infrastructure</div>
+      <div class="skill-tags">
+        <span class="skill-tag hot">AWS</span>
+        <span class="skill-tag hot">Kubernetes (EKS)</span>
+        <span class="skill-tag">Docker</span>
+        <span class="skill-tag">Terraform</span>
+        <span class="skill-tag">Jenkins</span>
+        <span class="skill-tag">GitHub Actions</span>
+        <span class="skill-tag">Canary Deployments</span>
+        <span class="skill-tag">EC2 · S3 · RDS · Lambda</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">🗄️</div>
+      <div class="skill-card-title">Data &amp; Storage</div>
+      <div class="skill-tags">
+        <span class="skill-tag hot">PostgreSQL</span>
+        <span class="skill-tag hot">Redis</span>
+        <span class="skill-tag">MongoDB</span>
+        <span class="skill-tag">MySQL</span>
+        <span class="skill-tag">High-Volume Data Processing</span>
+        <span class="skill-tag">Transaction Management</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">🖥️</div>
+      <div class="skill-card-title">Frontend (Supporting)</div>
+      <div class="skill-tags">
+        <span class="skill-tag">React.js</span>
+        <span class="skill-tag">Redux Toolkit</span>
+        <span class="skill-tag">React Query</span>
+        <span class="skill-tag">TypeScript</span>
+        <span class="skill-tag">HTML5/CSS3</span>
+        <span class="skill-tag">State Management</span>
+        <span class="skill-tag">Performance Optimization</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">🔒</div>
+      <div class="skill-card-title">Security &amp; Observability</div>
+      <div class="skill-tags">
+        <span class="skill-tag">OAuth2/JWT</span>
+        <span class="skill-tag">RBAC</span>
+        <span class="skill-tag">HIPAA Compliance</span>
+        <span class="skill-tag">Data Encryption</span>
+        <span class="skill-tag">Audit Logging</span>
+        <span class="skill-tag">Splunk</span>
+        <span class="skill-tag">ELK Stack</span>
+        <span class="skill-tag">CloudWatch</span>
+        <span class="skill-tag">JUnit · Mockito · TDD/BDD</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Professional Experience</div>
+  <h2 class="section-title">Where I've Worked</h2>
+  <div class="exp-timeline">
+
+    <div class="exp-item">
+      <div class="exp-date">Sep 2023 — Jul 2025</div>
+      <div class="exp-company">Artificial Inventions — CVS Health</div>
+      <div class="exp-role">Sr. Software Full Stack Engineer · Dallas, TX</div>
+      <ul class="exp-bullets">
+        <li>Architected scalable microservices with Java/Spring Boot, ensuring high availability and fault tolerance.</li>
+        <li>Designed event-driven systems with Kafka, enabling asynchronous, decoupled service communication.</li>
+        <li>Built end-to-end pipelines, improving performance by <strong>35%</strong> and accuracy by <strong>25%</strong>.</li>
+        <li>Implemented Saga patterns, ensuring <strong>99.7% data consistency</strong> across distributed services.</li>
+        <li>Deployed cloud-native systems on AWS (Docker, Kubernetes), improving scalability and deployment efficiency by <strong>50%</strong>.</li>
+        <li>Built CI/CD pipelines, enabling zero-downtime releases and reducing deployment time by <strong>60%</strong>.</li>
+        <li>Optimized performance and reliability via caching, database tuning, and observability, reducing MTTR by <strong>35%</strong>.</li>
+        <li>Led cross-team initiatives and mentored engineers, improving system quality and delivery velocity.</li>
+      </ul>
+      <div class="exp-stack">
+        <span class="stack-tag">Java</span><span class="stack-tag">Spring Boot</span><span class="stack-tag">Kafka</span>
+        <span class="stack-tag">React.js</span><span class="stack-tag">TypeScript</span><span class="stack-tag">AWS</span>
+        <span class="stack-tag">Kubernetes</span><span class="stack-tag">PostgreSQL</span><span class="stack-tag">Redis</span>
+        <span class="stack-tag">Terraform</span><span class="stack-tag">OAuth2/JWT</span>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">Sep 2022 — Jul 2023</div>
+      <div class="exp-company">Amazon</div>
+      <div class="exp-role">Software Development Engineer · Seattle, WA</div>
+      <ul class="exp-bullets">
+        <li>Built scalable backend services with Java, handling high-volume requests with low latency and high reliability.</li>
+        <li>Designed fault-tolerant service patterns (retry, circuit breakers, graceful degradation) to improve system resilience.</li>
+        <li>Developed internal platform for infrastructure visualization, improving operational efficiency across engineering teams.</li>
+        <li>Optimized performance using caching and database tuning, reducing latency and improving throughput.</li>
+        <li>Improved frontend performance using lazy loading and code splitting, reducing load time by <strong>~40%</strong>.</li>
+        <li>Led end-to-end feature delivery and mentored engineers, improving code quality and reducing technical debt by <strong>30%</strong>.</li>
+      </ul>
+      <div class="exp-stack">
+        <span class="stack-tag">Java</span><span class="stack-tag">Python</span><span class="stack-tag">REST APIs</span>
+        <span class="stack-tag">GraphQL</span><span class="stack-tag">Redis</span><span class="stack-tag">AngularJS</span>
+        <span class="stack-tag">AWS</span><span class="stack-tag">PostgreSQL</span><span class="stack-tag">SonarQube</span>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">Jun 2019 — May 2022</div>
+      <div class="exp-company">IKON Technologies <span style="color:var(--text3);font-weight:400;font-size:0.82rem">(Healthcare IT Consulting)</span></div>
+      <div class="exp-role">Full Stack Engineer</div>
+      <ul class="exp-bullets">
+        <li>Developed scalable backend systems with Java/Spring Boot, processing high-volume data reliably.</li>
+        <li>Designed and optimized APIs and database queries, improving performance by <strong>35%</strong>.</li>
+        <li>Built responsive frontend applications with React/Angular, improving usability and real-time data access.</li>
+        <li>Implemented CI/CD pipelines, enabling faster and more reliable deployments.</li>
+        <li>Automated data workflows and reporting, reducing manual effort and improving operational efficiency.</li>
+      </ul>
+      <div class="exp-stack">
+        <span class="stack-tag">Java</span><span class="stack-tag">Spring Boot</span><span class="stack-tag">GraphQL</span>
+        <span class="stack-tag">React.js</span><span class="stack-tag">AngularJS</span><span class="stack-tag">PostgreSQL</span>
+        <span class="stack-tag">Python</span><span class="stack-tag">Maven</span><span class="stack-tag">CI/CD</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Personal Projects</div>
+  <h2 class="section-title">Built From Scratch</h2>
+  <p class="section-sub">Hands-on systems exploring GenAI, event-driven architecture, and distributed platforms.</p>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-num">01</div>
+      <div class="project-title">GenAI-Powered Claims Assistant</div>
+      <ul class="project-highlights">
+        <li>Built an AI-powered system to automate validation, anomaly detection, and decision support in complex data workflows.</li>
+        <li>Designed event-driven microservices with Kafka, enabling scalable, real-time processing across distributed services.</li>
+        <li>Integrated LLMs with Retrieval-Augmented Generation (RAG) using vector search (FAISS/Pinecone) for contextual reasoning.</li>
+        <li>Chose RAG over direct LLM calls to reduce hallucinations and improve response accuracy.</li>
+        <li>Developed scalable processing pipelines capable of handling high-volume workloads with low latency.</li>
+        <li>Improved anomaly detection accuracy by ~20–25% compared to rule-based systems.</li>
+      </ul>
+      <div class="exp-stack" style="margin-bottom:1.25rem">
+        <span class="stack-tag">Java</span><span class="stack-tag">Kafka</span><span class="stack-tag">LLMs</span>
+        <span class="stack-tag">RAG</span><span class="stack-tag">FAISS</span><span class="stack-tag">React</span><span class="stack-tag">AWS</span>
+      </div>
+      <a href="https://github.com/nikki-g-dev/genai-claims-assistant" target="_blank" class="project-link">View on GitHub →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">02</div>
+      <div class="project-title">Real-Time Claims Platform</div>
+      <ul class="project-highlights">
+        <li>Built a distributed system to simulate end-to-end real-time processing workflows across multiple services.</li>
+        <li>Designed event-driven microservices architecture using Kafka and Spring Boot for scalable and decoupled processing.</li>
+        <li>Implemented Saga patterns to ensure consistency across distributed transactions.</li>
+        <li>Deployed cloud-native services on AWS using Docker and Kubernetes, enabling scalability and resilience.</li>
+        <li>Designed CI/CD pipelines for automated testing and zero-downtime deployments.</li>
+        <li>Validated system scalability and reliability under simulated high-throughput workloads.</li>
+      </ul>
+      <div class="exp-stack" style="margin-bottom:1.25rem">
+        <span class="stack-tag">Java</span><span class="stack-tag">Spring Boot</span><span class="stack-tag">Kafka</span>
+        <span class="stack-tag">React</span><span class="stack-tag">Kubernetes</span><span class="stack-tag">AWS</span>
+      </div>
+      <a href="https://github.com/nikki-g-dev/real-time-claims-platform" target="_blank" class="project-link">View on GitHub →</a>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EDUCATION & CREDENTIALS -->
+<section id="education">
+  <div class="section-label">Academic Background</div>
+  <h2 class="section-title">Education &amp; Credentials</h2>
+  <p class="section-sub">Building a strong foundation in computer science and evolving into system design and distributed architecture, while currently expanding into leadership and business strategy to drive larger engineering impact.</p>
+  <div class="edu-grid">
+    <div class="edu-card featured">
+      <span class="edu-badge">In Progress</span>
+      <div class="edu-degree">M.S. in Management (Leadership &amp; Strategy Focus)</div>
+      <div class="edu-school">Faulkner University, Montgomery, AL</div>
+      <div class="edu-year">Aug 2025 – Present</div>
+      <div class="edu-note">Focused on leadership, strategy, and business operations to complement technical expertise.</div>
+    </div>
+    <div class="edu-card">
+      <span class="edu-badge green">Completed</span>
+      <div class="edu-degree">M.S. in Computer Science</div>
+      <div class="edu-school">Wright State University, Dayton, OH</div>
+      <div class="edu-year">July 2022</div>
+    </div>
+    <div class="edu-card">
+      <span class="edu-badge green">Completed</span>
+      <div class="edu-degree">B.Tech in Information Technology</div>
+      <div class="edu-school">Shri Vishnu Engineering College, India</div>
+      <div class="edu-year">April 2019</div>
+    </div>
+  </div>
+  <div class="cert-aws">
+    <div class="cert-aws-icon">🏅</div>
+    <div>
+      <div class="cert-aws-name">AWS Certified Developer – Associate</div>
+      <div class="cert-aws-issuer">Amazon Web Services</div>
+    </div>
+    <div class="cert-aws-badge">AWS Certified</div>
+  </div>
+  <div class="certs-secondary">
+    <div class="cert-item">
+      <div class="cert-icon">✅</div>
+      <div><div class="cert-name">HackerRank Software Engineer Certification</div><div class="cert-issuer-text">HackerRank</div></div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-icon">✅</div>
+      <div><div class="cert-name">HackerRank Java Developer Certification</div><div class="cert-issuer-text">HackerRank</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Get In Touch</div>
+  <h2 class="section-title">Let's Build Scalable Systems Together</h2>
+  <p class="section-sub">Senior Full Stack Engineer specializing in distributed systems, event-driven architectures, and cloud-native platforms. Open to impactful backend, platform, and full-stack roles where I can design, scale, and optimize production systems.</p>
+  <p class="contact-note">Interested in opportunities focused on system design, performance optimization, and large-scale distributed architectures.</p>
+  <div class="contact-grid">
+    <div class="contact-links">
+      <a href="https://mail.google.com/mail/?view=cm&to=nikki.us.2020@gmail.com&su=Let%27s%20Connect%20%E2%80%94%20Engineering%20Opportunity" target="_blank" class="contact-link">
+        <span class="contact-link-icon">✉️</span>
+        <div><div class="contact-link-text">nikki.us.2020@gmail.com</div><div class="contact-link-label">Email via Gmail</div></div>
+      </a>
+      <a href="tel:9374743111" class="contact-link">
+        <span class="contact-link-icon">📞</span>
+        <div><div class="contact-link-text">937-474-3111</div><div class="contact-link-label">Phone</div></div>
+      </a>
+      <a href="https://linkedin.com/in/naga-nikhila-g" target="_blank" class="contact-link">
+        <span class="contact-link-icon">💼</span>
+        <div><div class="contact-link-text">linkedin.com/in/naga-nikhila-g</div><div class="contact-link-label">LinkedIn</div></div>
+      </a>
+      <a href="https://github.com/nikki-g-dev" target="_blank" class="contact-link">
+        <span class="contact-link-icon">🐙</span>
+        <div><div class="contact-link-text">github.com/nikki-g-dev</div><div class="contact-link-label">GitHub</div></div>
+      </a>
+    </div>
+    <div class="availability-card">
+      <div class="avail-status"><span class="avail-dot"></span>Open to Senior-Level Opportunities</div>
+      <p class="avail-text">Senior Full Stack Engineer with deep experience in building and scaling high-performance systems using Java, Spring Boot, Kafka, and AWS. Currently focused on distributed systems and expanding into leadership and system design at scale.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Naga Nikhila G</div>
+  <div class="footer-copy">Senior Full Stack Engineer · Dallas, TX</div>
+</footer>
+
+</body>
+</html>
